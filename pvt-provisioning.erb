@@ -286,7 +286,9 @@ text
 reboot
 
 %packages
-  dhclient
+  <% if os_major <= 10 -%>
+    dhclient
+  <% end -%>
   <% if os_major <= 7 -%>
     ntp
   <% else -%>
