@@ -343,7 +343,7 @@ reboot
   <%= snippet('snt-subscription_manager_registration') %>
     
   # install some packages, which are not part of the kickstart (baseOS) repository
-  declare __PACKAGES="sysstat wget tmux vim-enhanced bind-utils"
+  declare __PACKAGES="sysstat wget tmux vim-enhanced bind-utils qemu-guest-agent"
   <% if os_major <= 7 -%>
     __PACKAGES+="redhat-lsb-core"
   <% end -%>
