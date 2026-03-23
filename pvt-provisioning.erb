@@ -368,7 +368,9 @@ reboot
   declare -r __NTP_SERVER="$(dig +short _ntp._udp.<%= @host.domain -%> SRV | awk '{print $4}' | sed 's/\.$//')"
   
   # Configure /etc/ntp.conf (RHEL 7) or /etc/chrony.conf (RHEL 8)
+<% if os_major < 9 -%>
   <%= snippet('snt-configure_time_synchronization') %>
+<% end -%>
 
   # update all packages
   ${__PACKAGE_MANAGER} ${__PACKAGE_MANAGER_ARGUMENTS} update
