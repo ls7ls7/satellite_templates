@@ -335,9 +335,11 @@ reboot
   rpm --import "${__RHEL_GPG_KEY}"
   rpmkeys --import "${__RHEL_GPG_KEY}"
 
+<% if os_major < 9 -%>
   <% if subnet.respond_to?(:dhcp_boot_mode?) -%>
     <%= snippet('snt-networking_setup_post_installation') %>
   <% end -%>
+<% end -%>
 
   # register system to Capsule/Satellite
   <%= snippet('snt-subscription_manager_registration') %>
